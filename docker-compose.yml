@@ -1,5 +1,11 @@
 version: "3.8"
 services:
+  asterisk:
+    build: ./asterisk
+    ports:
+      - "${ASTERISK_SIP_PORT:-5060}:5060/udp"
+      # - "${ASTERISK_RTP_PORT_RANGE:-10000-20000}:${ASTERISK_RTP_PORT_RANGE:-10000-20000}/udp"
+    restart: unless-stopped
   db:
     image: postgres:16.1
     environment:
