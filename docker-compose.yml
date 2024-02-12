@@ -2,6 +2,8 @@ version: "3.8"
 services:
   asterisk:
     build: ./asterisk
+    volumes:
+      - "${PWD}/asterisk/conf/:/etc/asterisk:rw"
     network_mode: host
     restart: unless-stopped
   db:
